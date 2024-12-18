@@ -6,23 +6,23 @@ import stupid
 class TestStupid(unittest.TestCase) :
     @patch('builtins.input', side_effect=["what", "what", "soft"])
     def test_soft_n3(self, mock_input) :
-    '''OK'''
+        '''OK'''
         stupid.StupidDialog().dialog()
         self.assertEqual(mock_input.call_count, 3)
     @patch('builtins.input', side_effect=["what", "what", "smart"])
     def test_smart_n3(self, mock_input) :
-    '''OK'''
+        '''OK'''
         stupid.StupidDialog().dialog()
         self.assertEqual(mock_input.call_count, 3)
     @patch('builtins.input', side_effect=["what", "what", "hard"])
     def test_hard_n3(self, mock_input) :
-    '''not OK because of exit'''
+        '''not OK because of exit'''
         stupid.StupidDialog().dialog()
         self.assertEqual(mock_input.call_count, 3)
     @patch('builtins.input', side_effect=["what", "what", "hard"])
     @patch('sys.exit')
     def test_hard_exit(self, mock_exit, mock_input) :
-    '''OK'''
+        '''OK'''
         try:
             with self.assertRaises(SystemExit):
                 stupid.StupidDialog().dialog()
@@ -32,7 +32,7 @@ class TestStupid(unittest.TestCase) :
     @patch('builtins.input', side_effect=["what", "what", "hard"])
     @patch('sys.exit')
     def test_hard_exit_n3(self, mock_exit, mock_input) :
-    '''not OK because of call_count'''
+        '''not OK because of call_count'''
         try:
             with self.assertRaises(SystemExit):
                 stupid.StupidDialog().dialog()
